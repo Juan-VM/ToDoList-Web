@@ -1,12 +1,18 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+
+import { Component } from '@angular/core';
+import { NavbarComponent } from './components/navbar/navbar';
+import { TaskListComponent } from './components/task-list/task-list';
+import { FooterComponent } from './components/footer/footer';
 
 @Component({
-  imports: [RouterOutlet],
   selector: 'app-root',
-  styleUrl: './app.css',
+  standalone: true,
+  imports: [
+    NavbarComponent,
+    TaskListComponent,
+    FooterComponent
+  ],
   templateUrl: './app.html',
+  styleUrl: './app.css'
 })
-export class App {
-  protected readonly title = signal('To-Do-App');
-}
+export class App { }

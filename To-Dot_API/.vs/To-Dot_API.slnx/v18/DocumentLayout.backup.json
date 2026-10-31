@@ -1,0 +1,87 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\juanv\\OneDrive - CastroCarazo\\CASTRO CARAZO\\CUATRIMESTRES\\8vo CUATRIMESTRE\\PROGRAMACION VI\\Pruebas\\ToDoList-Web\\To-Dot_API\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9F1BDC2A-3321-387A-7FCF-8ADEFB82A602}|To-Dot_API\\To-Dot_API.csproj|c:\\users\\juanv\\onedrive - castrocarazo\\castro carazo\\cuatrimestres\\8vo cuatrimestre\\programacion vi\\pruebas\\todolist-web\\to-dot_api\\to-dot_api\\endpoint\\tasksendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F1BDC2A-3321-387A-7FCF-8ADEFB82A602}|To-Dot_API\\To-Dot_API.csproj|solutionrelative:to-dot_api\\endpoint\\tasksendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F1BDC2A-3321-387A-7FCF-8ADEFB82A602}|To-Dot_API\\To-Dot_API.csproj|c:\\users\\juanv\\onedrive - castrocarazo\\castro carazo\\cuatrimestres\\8vo cuatrimestre\\programacion vi\\pruebas\\todolist-web\\to-dot_api\\to-dot_api\\model\\taskitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F1BDC2A-3321-387A-7FCF-8ADEFB82A602}|To-Dot_API\\To-Dot_API.csproj|solutionrelative:to-dot_api\\model\\taskitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F1BDC2A-3321-387A-7FCF-8ADEFB82A602}|To-Dot_API\\To-Dot_API.csproj|c:\\users\\juanv\\onedrive - castrocarazo\\castro carazo\\cuatrimestres\\8vo cuatrimestre\\programacion vi\\pruebas\\todolist-web\\to-dot_api\\to-dot_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F1BDC2A-3321-387A-7FCF-8ADEFB82A602}|To-Dot_API\\To-Dot_API.csproj|solutionrelative:to-dot_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F1BDC2A-3321-387A-7FCF-8ADEFB82A602}|To-Dot_API\\To-Dot_API.csproj|c:\\users\\juanv\\onedrive - castrocarazo\\castro carazo\\cuatrimestres\\8vo cuatrimestre\\programacion vi\\pruebas\\todolist-web\\to-dot_api\\to-dot_api\\services\\mongoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F1BDC2A-3321-387A-7FCF-8ADEFB82A602}|To-Dot_API\\To-Dot_API.csproj|solutionrelative:to-dot_api\\services\\mongoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\juanv\\OneDrive - CastroCarazo\\CASTRO CARAZO\\CUATRIMESTRES\\8vo CUATRIMESTRE\\PROGRAMACION VI\\Pruebas\\ToDoList-Web\\To-Dot_API\\To-Dot_API\\Program.cs",
+              "RelativeDocumentMoniker": "To-Dot_API\\Program.cs",
+              "ToolTip": "C:\\Users\\juanv\\OneDrive - CastroCarazo\\CASTRO CARAZO\\CUATRIMESTRES\\8vo CUATRIMESTRE\\PROGRAMACION VI\\Pruebas\\ToDoList-Web\\To-Dot_API\\To-Dot_API\\Program.cs",
+              "RelativeToolTip": "To-Dot_API\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-31T03:16:35.662Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MongoService.cs",
+              "DocumentMoniker": "C:\\Users\\juanv\\OneDrive - CastroCarazo\\CASTRO CARAZO\\CUATRIMESTRES\\8vo CUATRIMESTRE\\PROGRAMACION VI\\Pruebas\\ToDoList-Web\\To-Dot_API\\To-Dot_API\\Services\\MongoService.cs",
+              "RelativeDocumentMoniker": "To-Dot_API\\Services\\MongoService.cs",
+              "ToolTip": "C:\\Users\\juanv\\OneDrive - CastroCarazo\\CASTRO CARAZO\\CUATRIMESTRES\\8vo CUATRIMESTRE\\PROGRAMACION VI\\Pruebas\\ToDoList-Web\\To-Dot_API\\To-Dot_API\\Services\\MongoService.cs",
+              "RelativeToolTip": "To-Dot_API\\Services\\MongoService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-31T03:15:23.676Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TaskItem.cs",
+              "DocumentMoniker": "C:\\Users\\juanv\\OneDrive - CastroCarazo\\CASTRO CARAZO\\CUATRIMESTRES\\8vo CUATRIMESTRE\\PROGRAMACION VI\\Pruebas\\ToDoList-Web\\To-Dot_API\\To-Dot_API\\Model\\TaskItem.cs",
+              "RelativeDocumentMoniker": "To-Dot_API\\Model\\TaskItem.cs",
+              "ToolTip": "C:\\Users\\juanv\\OneDrive - CastroCarazo\\CASTRO CARAZO\\CUATRIMESTRES\\8vo CUATRIMESTRE\\PROGRAMACION VI\\Pruebas\\ToDoList-Web\\To-Dot_API\\To-Dot_API\\Model\\TaskItem.cs",
+              "RelativeToolTip": "To-Dot_API\\Model\\TaskItem.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAUwDQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-31T03:15:11.312Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TasksEndpoint.cs",
+              "DocumentMoniker": "C:\\Users\\juanv\\OneDrive - CastroCarazo\\CASTRO CARAZO\\CUATRIMESTRES\\8vo CUATRIMESTRE\\PROGRAMACION VI\\Pruebas\\ToDoList-Web\\To-Dot_API\\To-Dot_API\\Endpoint\\TasksEndpoint.cs",
+              "RelativeDocumentMoniker": "To-Dot_API\\Endpoint\\TasksEndpoint.cs",
+              "ToolTip": "C:\\Users\\juanv\\OneDrive - CastroCarazo\\CASTRO CARAZO\\CUATRIMESTRES\\8vo CUATRIMESTRE\\PROGRAMACION VI\\Pruebas\\ToDoList-Web\\To-Dot_API\\To-Dot_API\\Endpoint\\TasksEndpoint.cs",
+              "RelativeToolTip": "To-Dot_API\\Endpoint\\TasksEndpoint.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAQwCMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-31T03:14:43.852Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

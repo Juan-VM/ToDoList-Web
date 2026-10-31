@@ -13,16 +13,16 @@
         </button>
     </section>
 
-    @if (successMessage) {
+    @if (successMessage()) {
     <div role="status" class="rounded-lg border border-green-200 bg-green-50 p-3 text-sm text-green-800">
-        {{ successMessage }}
+        {{ successMessage() }}
     </div>
     }
 
-    @if (errorMessage) {
+    @if (errorMessage()) {
     <div role="alert"
         class="flex items-center justify-between gap-3 rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700">
-        <span>{{ errorMessage }}</span>
+        <span>{{ errorMessage() }}</span>
         <button (click)="loadTasks()" class="font-semibold underline">Reintentar</button>
     </div>
     }
@@ -110,7 +110,7 @@
         </div>
     </section>
 
-    @if (loading) {
+    @if (loading()) {
     <div class="rounded-xl border border-slate-200 bg-white py-16 text-center">
         <span class="material-symbols-outlined animate-spin text-4xl text-indigo-600">progress_activity</span>
         <p class="mt-3 text-sm text-slate-500">Cargando tareas...</p>
@@ -137,8 +137,7 @@
                     <div class="flex flex-wrap items-center gap-2">
                         <input type="checkbox" [checked]="task.completed" (change)="toggleCompleted(task)"
                             [attr.aria-label]="'Marcar ' + task.title + ' como completada'"
-                            class="h-4 w-4 cursor-pointer rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
-                            disabled />
+                            class="h-4 w-4 cursor-pointer rounded border-slate-300 text-indigo-600 focus:ring-indigo-500" />
 
                         <span [class]="categoryClass(task.category)"
                             class="rounded-md px-2.5 py-1 text-xs font-semibold">
@@ -273,8 +272,8 @@
             </label>
             }
 
-            @if (errorMessage) {
-            <p role="alert" class="rounded-lg bg-red-50 p-3 text-sm text-red-700">{{ errorMessage }}</p>
+            @if (errorMessage()) {
+            <p role="alert" class="rounded-lg bg-red-50 p-3 text-sm text-red-700">{{ errorMessage() }}</p>
             }
 
             <div class="flex justify-end gap-3 border-t border-slate-100 pt-4">
@@ -282,9 +281,9 @@
                     class="rounded-lg border border-slate-300 px-4 py-2.5 text-sm font-semibold text-slate-700 hover:bg-slate-50">
                     Cancelar
                 </button>
-                <button type="submit" [disabled]="taskForm.invalid || saving"
+                <button type="submit" [disabled]="taskForm.invalid || saving()"
                     class="rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-indigo-700 disabled:cursor-not-allowed disabled:opacity-50">
-                    {{ saving ? 'Guardando...' : (editingId ? 'Guardar cambios' : 'Crear tarea') }}
+                    {{ saving() ? 'Guardando...' : (editingId ? 'Guardar cambios' : 'Crear tarea') }}
                 </button>
             </div>
         </form>

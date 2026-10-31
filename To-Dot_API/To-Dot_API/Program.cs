@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenApi();
 
-var connectionString = "mongodb+srv://userName:Psw@cluster0.fd4u3wk.mongodb.net/";
+var connectionString = "mongodb+srv://UserName:Paswword@cluster0.fd4u3wk.mongodb.net/";
 builder.Services.AddSingleton<IMongoClient>(new MongoClient(connectionString));
 
 builder.Services.AddCors(options =>

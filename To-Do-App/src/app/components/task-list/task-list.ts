@@ -1,5 +1,5 @@
 
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -20,11 +20,11 @@ import {
 export class TaskListComponent implements OnInit {
   private taskService = inject(TaskService);
 
-  tasks: TaskItem[] = [];
-  loading = false;
-  saving = false;
-  errorMessage = '';
-  successMessage = '';
+  tasks = signal<TaskItem[]>([]);
+  loading = signal(false);
+  saving = signal(false);
+  errorMessage = signal('');
+  successMessage = signal('');
 
   search = '';
   statusFilter = 'todas';
@@ -59,19 +59,19 @@ export class TaskListComponent implements OnInit {
   }
 
   get pendingCount(): number {
-    return this.tasks.filter(t => !t.completed).length;
+    return this.tasks().filter(t => !t.completed).length;
   }
 
   get completedCount(): number {
-    return this.tasks.filter(t => t.completed).length;
+    return this.tasks().filter(t => t.completed).length;
   }
 
   get totalCount(): number {
-    return this.tasks.length;
+    return this.tasks().length;
   }
 
   get visibleTasks(): TaskItem[] {
-    return this.tasks.filter(task => {
+    return this.tasks().filter(task => {
       const term = this.search.trim().toLowerCase();
 
       const matchesSearch =
@@ -98,8 +98,8 @@ export class TaskListComponent implements OnInit {
   }
 
   loadTasks(): void {
-    this.loading = true;
-    this.errorMessage = '';
+    this.loading.set(true);
+    this.errorMessage.set('');
 
     const filters: TaskFilters = {
       sortBy: this.sortBy
@@ -108,19 +108,15 @@ export class TaskListComponent implements OnInit {
     // Los filtros restantes se aplican en visibleTasks.
     this.taskService.getTasks(filters).subscribe({
       next: (tasks) => {
-        console.log('Respuesta recibida:', tasks);
-        console.log('¿Es un arreglo?', Array.isArray(tasks));
-
-        this.tasks = tasks;
-        this.loading = false;
-
-        console.log('Total de tareas:', this.tasks.length);
+        this.tasks.set(tasks);
+        this.loading.set(false);
       },
       error: err => {
         console.error(err);
-        this.errorMessage =
-          'No se pudieron cargar las tareas. Verifica que la API esté funcionando.';
-        this.loading = false;
+        this.errorMessage.set(
+          'No se pudieron cargar las tareas. Verifica que la API esté funcionando.'
+        );
+        this.loading.set(false);
       }
     });
   }
@@ -139,7 +135,7 @@ export class TaskListComponent implements OnInit {
   openCreate(): void {
     this.editingId = null;
     this.form = this.emptyTask();
-    this.successMessage = '';
+    this.successMessage.set('');
     this.showModal = true;
   }
 
@@ -153,17 +149,18 @@ export class TaskListComponent implements OnInit {
         : ''
     };
 
-    this.successMessage = '';
+    this.successMessage.set('');
     this.showModal = true;
   }
 
   saveTask(): void {
-    if (!this.form.title.trim() || !this.form.dueDate || this.saving) {
+    if (!this.form.title.trim() || !this.form.dueDate || this.saving()) {
       return;
     }
 
-    this.saving = true;
-    this.errorMessage = '';
+    this.saving.set(true);
+    this.errorMessage.set('');
+    this.successMessage.set('');
 
     const payload: TaskItem = {
       ...this.form,
@@ -181,16 +178,18 @@ export class TaskListComponent implements OnInit {
     request.subscribe({
       next: () => {
         this.showModal = false;
-        this.saving = false;
-        this.successMessage = this.editingId
-          ? 'Tarea actualizada correctamente.'
-          : 'Tarea creada correctamente.';
+        this.saving.set(false);
+        this.successMessage.set(
+          this.editingId
+            ? 'Tarea actualizada correctamente.'
+            : 'Tarea creada correctamente.'
+        );
         this.loadTasks();
       },
       error: err => {
         console.error(err);
-        this.errorMessage = 'No se pudo guardar la tarea.';
-        this.saving = false;
+        this.errorMessage.set('No se pudo guardar la tarea.');
+        this.saving.set(false);
       }
     });
   }
@@ -200,16 +199,20 @@ export class TaskListComponent implements OnInit {
 
     const updated = { ...task, completed: !task.completed };
 
+    this.successMessage.set('');
+
     this.taskService.updateTask(task.id, updated).subscribe({
       next: () => {
-        this.successMessage = updated.completed
-          ? 'Tarea completada.'
-          : 'Tarea marcada como pendiente.';
+        this.successMessage.set(
+          updated.completed
+            ? 'Tarea completada.'
+            : 'Tarea marcada como pendiente.'
+        );
         this.loadTasks();
       },
       error: err => {
         console.error(err);
-        this.errorMessage = 'No se pudo actualizar el estado.';
+        this.errorMessage.set('No se pudo actualizar el estado.');
       }
     });
   }
@@ -228,12 +231,12 @@ export class TaskListComponent implements OnInit {
       next: () => {
         this.showDeleteModal = false;
         this.taskToDelete = null;
-        this.successMessage = 'Tarea eliminada correctamente.';
+        this.successMessage.set('Tarea eliminada correctamente.');
         this.loadTasks();
       },
       error: err => {
         console.error(err);
-        this.errorMessage = 'No se pudo eliminar la tarea.';
+        this.errorMessage.set('No se pudo eliminar la tarea.');
         this.showDeleteModal = false;
       }
     });

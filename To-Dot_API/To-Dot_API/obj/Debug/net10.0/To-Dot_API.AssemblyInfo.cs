@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("To-Dot_API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+573599fbd3e67966b4fa3b3449085807b7fd990f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d2a8f8d1b743f7ec4fb55abe0711c1a5dfedf0b1")]
 [assembly: System.Reflection.AssemblyProductAttribute("To-Dot_API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("To-Dot_API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

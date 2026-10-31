@@ -18,7 +18,7 @@ export class TaskService {
     private http = inject(HttpClient);
 
     // Cambia el puerto por el que utiliza tu API.
-    private readonly apiUrl = 'https://localhost:7000/api/tasks';
+    private readonly apiUrl = 'https://localhost:7049/api/tasks';
 
     getTasks(filters: TaskFilters = {}): Observable<TaskItem[]> {
         let params = new HttpParams();

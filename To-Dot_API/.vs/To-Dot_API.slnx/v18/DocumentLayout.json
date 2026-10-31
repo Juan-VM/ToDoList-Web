@@ -1,12 +1,37 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\juanv\\OneDrive - CastroCarazo\\CASTRO CARAZO\\CUATRIMESTRES\\8vo CUATRIMESTRE\\PROGRAMACION VI\\Pruebas\\ToDoList-Web\\To-Dot_API\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9F1BDC2A-3321-387A-7FCF-8ADEFB82A602}|To-Dot_API\\To-Dot_API.csproj|c:\\users\\juanv\\onedrive - castrocarazo\\castro carazo\\cuatrimestres\\8vo cuatrimestre\\programacion vi\\pruebas\\todolist-web\\to-dot_api\\to-dot_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F1BDC2A-3321-387A-7FCF-8ADEFB82A602}|To-Dot_API\\To-Dot_API.csproj|solutionrelative:to-dot_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\juanv\\OneDrive - CastroCarazo\\CASTRO CARAZO\\CUATRIMESTRES\\8vo CUATRIMESTRE\\PROGRAMACION VI\\Pruebas\\ToDoList-Web\\To-Dot_API\\To-Dot_API\\Program.cs",
+              "RelativeDocumentMoniker": "To-Dot_API\\Program.cs",
+              "ToolTip": "C:\\Users\\juanv\\OneDrive - CastroCarazo\\CASTRO CARAZO\\CUATRIMESTRES\\8vo CUATRIMESTRE\\PROGRAMACION VI\\Pruebas\\ToDoList-Web\\To-Dot_API\\To-Dot_API\\Program.cs",
+              "RelativeToolTip": "To-Dot_API\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-31T05:02:19.046Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

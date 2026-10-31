@@ -107,9 +107,14 @@ export class TaskListComponent implements OnInit {
 
     // Los filtros restantes se aplican en visibleTasks.
     this.taskService.getTasks(filters).subscribe({
-      next: tasks => {
+      next: (tasks) => {
+        console.log('Respuesta recibida:', tasks);
+        console.log('¿Es un arreglo?', Array.isArray(tasks));
+
         this.tasks = tasks;
         this.loading = false;
+
+        console.log('Total de tareas:', this.tasks.length);
       },
       error: err => {
         console.error(err);

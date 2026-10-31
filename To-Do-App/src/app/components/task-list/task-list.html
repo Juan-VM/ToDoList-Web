@@ -137,7 +137,8 @@
                     <div class="flex flex-wrap items-center gap-2">
                         <input type="checkbox" [checked]="task.completed" (change)="toggleCompleted(task)"
                             [attr.aria-label]="'Marcar ' + task.title + ' como completada'"
-                            class="h-4 w-4 cursor-pointer rounded border-slate-300 text-indigo-600 focus:ring-indigo-500" />
+                            class="h-4 w-4 cursor-pointer rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
+                            disabled />
 
                         <span [class]="categoryClass(task.category)"
                             class="rounded-md px-2.5 py-1 text-xs font-semibold">

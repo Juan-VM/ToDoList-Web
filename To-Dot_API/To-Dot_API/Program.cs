@@ -7,13 +7,27 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenApi();
 
-var connectionString = "mongodb+srv://UserName:Password@cluster0.fd4u3wk.mongodb.net/";
-
+var connectionString = "mongodb+srv://userName:Psw@cluster0.fd4u3wk.mongodb.net/";
 builder.Services.AddSingleton<IMongoClient>(new MongoClient(connectionString));
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AngularApp", policy =>
+    {
+        policy
+            .WithOrigins("http://localhost:4200")
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
 
 
 var app = builder.Build();
 
+// CORS antes de los endpoints.
+app.UseCors("AngularApp");
+
+app.UseHttpsRedirection();
 
 if (app.Environment.IsDevelopment())
 {
@@ -21,7 +35,6 @@ if (app.Environment.IsDevelopment())
     app.MapScalarApiReference();
 }
 
-app.UseHttpsRedirection();
 app.MapTasksEndpoint();
 
 

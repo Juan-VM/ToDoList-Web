@@ -11,6 +11,18 @@ import {
   Category
 } from '../../models/task.model';
 
+/**
+  Componente principal de la aplicación.
+ 
+  Se encarga de:
+  - Pedir las tareas a la API mediante TaskService.
+  - Guardar el estado de la pantalla (lista, filtros, modales, mensajes).
+  - Crear, editar, completar y eliminar tareas.
+ 
+  El estado que cambia por una respuesta HTTP se maneja con "signals"
+  (tasks, loading, saving, errorMessage, successMessage). Así Angular sabe
+  que debe volver a dibujar la pantalla cuando llega la respuesta de la API.
+ */
 @Component({
   selector: 'app-task-list',
   standalone: true,
@@ -20,23 +32,27 @@ import {
 export class TaskListComponent implements OnInit {
   private taskService = inject(TaskService);
 
-  tasks = signal<TaskItem[]>([]);
-  loading = signal(false);
-  saving = signal(false);
-  errorMessage = signal('');
-  successMessage = signal('');
+  tasks = signal<TaskItem[]>([]);      // Lista de tareas recibida de la API
+  loading = signal(false);             // true mientras se cargan las tareas
+  saving = signal(false);              // true mientras se guarda una tarea
+  errorMessage = signal('');           // Mensaje de error visible al usuario
+  successMessage = signal('');         // Mensaje de éxito visible al usuario
 
+  // ---- Filtros de la pantalla ----
+  // Se aplican localmente en "visibleTasks", sin volver a llamar a la API.
   search = '';
-  statusFilter = 'todas';
+  statusFilter = 'todas';              // 'todas' | 'pendientes' | 'completadas'
   priorityFilter = '';
   categoryFilter = '';
-  sortBy = 'fechaLimite';
+  sortBy = 'fechaLimite';              // Sí se envía a la API para ordenar
 
-  showModal = false;
-  showDeleteModal = false;
-  editingId: string | null = null;
+  // ---- Control de los modales ----
+  showModal = false;                   // Modal de crear/editar
+  showDeleteModal = false;             // Modal de confirmación de borrado
+  editingId: string | null = null;     // null = crear, con id = editar
   taskToDelete: TaskItem | null = null;
 
+  // Opciones que se muestran en los selects del formulario y de los filtros.
   readonly priorities = [
     { value: Priority.Baja, label: 'Baja' },
     { value: Priority.Media, label: 'Media' },
@@ -52,12 +68,15 @@ export class TaskListComponent implements OnInit {
     { value: Category.Finanzas, label: 'Finanzas' }
   ];
 
+
   form: TaskItem = this.emptyTask();
 
+  // Al iniciar el componente se cargan las tareas de la API.
   ngOnInit(): void {
     this.loadTasks();
   }
 
+  // ---- Contadores calculados a partir de la lista ----
   get pendingCount(): number {
     return this.tasks().filter(t => !t.completed).length;
   }
@@ -70,6 +89,10 @@ export class TaskListComponent implements OnInit {
     return this.tasks().length;
   }
 
+  /**
+    Lista que realmente se muestra en pantalla.
+    Aplica búsqueda y filtros de estado, prioridad y categoría.
+  */
   get visibleTasks(): TaskItem[] {
     return this.tasks().filter(task => {
       const term = this.search.trim().toLowerCase();
@@ -97,6 +120,10 @@ export class TaskListComponent implements OnInit {
     });
   }
 
+  /**
+    Pide todas las tareas a la API y actualiza el estado.
+    Solo se envía "sortBy"; los demás filtros se aplican en visibleTasks().
+  */
   loadTasks(): void {
     this.loading.set(true);
     this.errorMessage.set('');
@@ -105,7 +132,6 @@ export class TaskListComponent implements OnInit {
       sortBy: this.sortBy
     };
 
-    // Los filtros restantes se aplican en visibleTasks.
     this.taskService.getTasks(filters).subscribe({
       next: (tasks) => {
         this.tasks.set(tasks);
@@ -121,6 +147,7 @@ export class TaskListComponent implements OnInit {
     });
   }
 
+  // Devuelve un formulario vacío con valores por defecto.
   emptyTask(): TaskItem {
     return {
       title: '',
@@ -132,6 +159,7 @@ export class TaskListComponent implements OnInit {
     };
   }
 
+  // Abre el modal en modo "crear" con el formulario limpio.
   openCreate(): void {
     this.editingId = null;
     this.form = this.emptyTask();
@@ -139,6 +167,7 @@ export class TaskListComponent implements OnInit {
     this.showModal = true;
   }
 
+  // Abre el modal en modo "editar" precargando los datos de la tarea.
   openEdit(task: TaskItem): void {
     this.editingId = task.id ?? null;
 
@@ -153,6 +182,10 @@ export class TaskListComponent implements OnInit {
     this.showModal = true;
   }
 
+  /**
+    Guarda el formulario: crea una tarea nueva o actualiza la existente.
+    Si editingId tiene valor se hace PUT; si no, POST.
+   */
   saveTask(): void {
     if (!this.form.title.trim() || !this.form.dueDate || this.saving()) {
       return;
@@ -162,6 +195,7 @@ export class TaskListComponent implements OnInit {
     this.errorMessage.set('');
     this.successMessage.set('');
 
+    // Se arma el objeto final que se enviará a la API.
     const payload: TaskItem = {
       ...this.form,
       title: this.form.title.trim(),
@@ -184,7 +218,7 @@ export class TaskListComponent implements OnInit {
             ? 'Tarea actualizada correctamente.'
             : 'Tarea creada correctamente.'
         );
-        this.loadTasks();
+        this.loadTasks(); // Recarga para reflejar el cambio en la lista
       },
       error: err => {
         console.error(err);
@@ -194,6 +228,7 @@ export class TaskListComponent implements OnInit {
     });
   }
 
+  // Cambia el estado completada/pendiente y guarda el cambio en la API.
   toggleCompleted(task: TaskItem): void {
     if (!task.id) return;
 
@@ -217,11 +252,13 @@ export class TaskListComponent implements OnInit {
     });
   }
 
+  // Guarda la tarea seleccionada y abre el modal de confirmación.
   confirmDelete(task: TaskItem): void {
     this.taskToDelete = task;
     this.showDeleteModal = true;
   }
 
+  // Elimina en la API la tarea confirmada y recarga la lista.
   deleteTask(): void {
     const task = this.taskToDelete;
 
@@ -241,6 +278,9 @@ export class TaskListComponent implements OnInit {
       }
     });
   }
+
+  // ---- Esto de aqui es parte de la configuracion de colores de etiquetas y asi ----
+  // Lo traia el estilo de tailwind
 
   priorityLabel(value: Priority): string {
     return this.priorities.find(p => p.value === value)?.label ?? 'Media';
@@ -278,11 +318,13 @@ export class TaskListComponent implements OnInit {
     }
   }
 
+  // Una tarea está vencida si no está completada y su fecha ya pasó.
   isOverdue(task: TaskItem): boolean {
     return !task.completed &&
       new Date(task.dueDate).getTime() < new Date().setHours(0, 0, 0, 0);
   }
 
+  // Restablece todos los filtros y vuelve a pedir la lista ordenada.
   clearFilters(): void {
     this.search = '';
     this.statusFilter = 'todas';

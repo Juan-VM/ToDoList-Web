@@ -1,4 +1,5 @@
 
+// Enums que se usan en los selects y para comparar valores con la API.
 export enum Priority {
     Baja = 0,
     Media = 1,
@@ -14,6 +15,7 @@ export enum Category {
     Finanzas = 5
 }
 
+// Forma de una tarea tal como la devuelve la API.
 export interface TaskItem {
     id?: string;
     title: string;
@@ -26,6 +28,7 @@ export interface TaskItem {
     userId?: string | null;
 }
 
+// Parámetros opcionales para filtrar u ordenar al pedir las tareas.
 export interface TaskFilters {
     completed?: boolean;
     priority?: Priority;

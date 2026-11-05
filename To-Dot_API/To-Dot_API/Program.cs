@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenApi();
 
-var connectionString = "Cadena de conexion";
+var connectionString = "Conection_String";
 builder.Services.AddSingleton<IMongoClient>(new MongoClient(connectionString));
 
 builder.Services.AddCors(options =>
